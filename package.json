@@ -1,0 +1,22 @@
+{
+  "name": "obj-property-selector",
+  "version": "1.0.0",
+  "description": "A library that allows you to extract properties from objects using object notation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BertoGz/obj-property-selector.git"
+  },
+  "keywords": [
+    "serialize"
+  ],
+  "author": "berto gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BertoGz/obj-property-selector/issues"
+  },
+  "homepage": "https://github.com/BertoGz/obj-property-selector#readme"
+}
