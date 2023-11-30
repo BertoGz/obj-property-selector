@@ -82,8 +82,8 @@ function createPaths(inputString) {
 
   return result;
 }
-// handles reading and creating the serialized object
-function getSerializedObj(object, pathElements) {
+// handles reading and creating the selected object
+function getSeletedObj(object, pathElements) {
   // first check if the pathElements is an array,
   // if it isnt,return the value of the objects key
   if (Array.isArray(pathElements)) {
@@ -122,17 +122,17 @@ function getSerializedObj(object, pathElements) {
 
 let memoSchema = {};
 
-function serialize(obj, schema) {
+function select(obj, schema) {
   let pathsArray;
-  // check if this obj has already been serliazed before and use cache value
+  // check if this schema has already been used before. use cache value to save time.
   if (memoSchema[schema]) {
     pathsArray = memoSchema[schema];
   } else {
     pathsArray = createPaths(schema);
     memoSchema[schema] = pathsArray;
   }
-  const result = getSerializedObj(obj, pathsArray);
+  const result = getSeletedObj(obj, pathsArray);
   return result;
 }
 
-module.exports = serialize;
+module.exports = select;
