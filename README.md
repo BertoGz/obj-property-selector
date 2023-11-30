@@ -15,6 +15,7 @@ examples:
 - `"places{sanDiego},people"` will perform the same task but only return the value "sanDiego".
 - `"places{sanDiego{cityName,population},people"` will perform the same task but only return the city name and population properties.
 
+# Code Sample
 ```
 const select = require('obj-property-selector');
 
