@@ -93,7 +93,7 @@ function getSeletedObj(object, pathElements) {
       const pe = pathElements[i];
       // debugger;
       if (Array.isArray(pe)) {
-        const res2 = createObject(object, pe);
+        const res2 = getSeletedObj(object, pe);
         const key = Object.keys(res2)[0];
         result[key] = res2[key];
         i++;
@@ -103,7 +103,7 @@ function getSeletedObj(object, pathElements) {
         if (pe.includes("*")) {
           const paths = pathElements[i + 1];
           const key = pe.slice(0, -1);
-          const data = createObject(object[key], paths);
+          const data = getSeletedObj(object[key], paths);
           result[key] = data;
           i += 2;
         } else {
