@@ -13,8 +13,8 @@ passing a string that incorrectly matches the object will generate incorrect res
 
 examples:
 - `"places,people"` will extract the values "places" and "people" from some object.
-- `"places{sanDiego},people"` will perform the same task but only return the value "sanDiego".
-- `"places{sanDiego{cityName,population},people"` will perform the same task but only return the city name and population properties.
+- `"places{sanDiego},people"` will perform the same operation but only return the value "sanDiego".
+- `"places{sanDiego{cityName,population},people"` will perform the same operation but only return the city name and population properties.
 
 # Code Sample
 ```
