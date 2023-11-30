@@ -1,5 +1,6 @@
 # obj-property-selector
 A library that allows you to extract properties from objects using schema strings.
+useful for serializing data.
 
 ### Usage
 Import the select function from this module.
