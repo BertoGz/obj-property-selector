@@ -1,4 +1,8 @@
-// very basic function which handles finding first pair of curly braces in a string
+/**
+ * @param {*} str "items{food,clothes}"
+ * @description handles parsing the first pair of curly braces,
+ * @returns Array, ["items*",["food","clothes"]]
+ */
 function parseCurlyBrace(str) {
   let braceCount = 0;
   let splitIndex = 0;
@@ -22,7 +26,11 @@ function parseCurlyBrace(str) {
 
   return str;
 }
-// very basic function which splits the string on all commas not** inside a curly braces
+/**
+ * @param {*} str "items,people{count,names}"
+ * @description handles parsing any comma not within curly brace,
+ * @returns Array, ["items","people{count,names}"]
+ */
 function parseComma(inputString) {
   let result = [];
   let temp = "";
@@ -52,10 +60,9 @@ function parseComma(inputString) {
   return result.length === 1 ? result[0] : result;
 }
 
-//handles creating the array paths
+//handles creating the array representing the property access pattern
 function createPaths(inputString) {
   let result = parseComma(inputString); // split by commas
-  
   // if the result is an array of items, recurse through each entry
   // else if result is just a string, parse curly braces.
   if (Array.isArray(result)) {
@@ -75,8 +82,8 @@ function createPaths(inputString) {
 
   return result;
 }
-// handles creating the serialized object
-function createObject(object, pathElements) {
+// handles reading and creating the serialized object
+function getSerializedObj(object, pathElements) {
   // first check if the pathElements is an array,
   // if it isnt,return the value of the objects key
   if (Array.isArray(pathElements)) {
@@ -113,19 +120,19 @@ function createObject(object, pathElements) {
   }
 }
 
-let memoShape = {};
-export const serializeData = {
-  createPaths: (shape) => {
-    if (memoShape[shape]) {
-      return memoShape[shape];
-    }
+let memoSchema = {};
 
-    const paths = createPaths(shape);
-    memoShape[shape] = paths;
-    return paths;
-  },
-  serialize: (obj, paths) => {
-    const result = createObject(obj, paths);
-    return result;
-  },
-};
+function serialize(obj, schema) {
+  let pathsArray;
+  // check if this obj has already been serliazed before and use cache value
+  if (memoSchema[schema]) {
+    pathsArray = memoSchema[schema];
+  } else {
+    pathsArray = createPaths(schema);
+    memoSchema[schema] = pathsArray;
+  }
+  const result = getSerializedObj(obj, pathsArray);
+  return result;
+}
+
+module.exports = serialize;
