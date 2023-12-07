@@ -13,9 +13,9 @@ The function will return the result object according to the provided schema.
 passing a string that incorrectly matches the object will generate incorrect result. 
 
 examples:
-- `"places,people"` will extract the values "places" and "people" from some object.
-- `"places{sanDiego},people"` will perform the same operation but only return the value "sanDiego".
-- `"places{sanDiego{cityName,population},people"` will perform the same operation but only return the city name and population properties.
+- `"places,people"` will extract the values "places" and "people" from the object.
+- `"places{sanDiego},people"` will perform the same operation but only return the property "sanDiego".
+- `"places{sanDiego{cityName,population},people"` will perform the same operation but only return the city-name and population properties.
 
 # Code Sample
 ```
